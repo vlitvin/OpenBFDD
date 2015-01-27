@@ -1,0 +1,16 @@
+Source: openbfdd
+Section: unknown
+Priority: extra
+Maintainer: Andrey Shorin (HH R&D Expluatation) <a.shorin@hh.ru>
+Build-Depends: debhelper (>= 8.0.0), autotools-dev
+Standards-Version: 3.9.2
+Homepage: https://github.com/dyninc/OpenBFDD/wiki
+#Vcs-Git: git://git.debian.org/collab-maint/openbfdd.git
+#Vcs-Browser: http://git.debian.org/?p=collab-maint/openbfdd.git;a=summary
+
+Package: openbfdd
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Implementation of the Bidirectional Forwarding Detection (BFD) protocol
+ This project provides a software based implementation of the Bidirectional Forwarding Detection (BFD) protocol. It is designed to run on a server. Its primary purpose is to allow the administrator to quickly take the server off-line when the core service, such as a bind or unbound server, goes down. This is done by implementing a BFD "beacon" that can communicate with a properly configured, BFD enabled, router.
+ The project consists primarily of bfdd-beacon which provides the actual BFD functionality, and its companion,bfdd-control, which provides runtime control of the beacon.
