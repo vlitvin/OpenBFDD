@@ -1,0 +1,39 @@
+description 'openbfdd'
+start on runlevel [2345]
+stop on runlevel [!2345]
+
+respawn
+
+script
+	NAME="$UPSTART_JOB"             # Introduce the short server's name here
+	DAEMON=/usr/bin/bfdd-beacon # Introduce the server's location here
+	DAEMON_ARGS=""             # Arguments to run the daemon with
+	[ -r /etc/default/$NAME ] && . /etc/default/$NAME
+	echo $$ > /var/run/$NAME.pid
+	exec $DAEMON $DAEMON_ARGS --nofork --tee >> /var/log/openbfdd.log 2>&1 
+end script
+
+post-start script
+        NAME="$UPSTART_JOB"
+        PATH=/sbin:/usr/sbin:/bin:/usr/bin
+        CONTROL_COMMAND="/usr/bin/bfdd-control"
+        OPENBFDD_CONTROL=""
+        [ -r /etc/default/$NAME ] && . /etc/default/$NAME
+        start_time=$(date +%s)
+        until $CONTROL_COMMAND version; do
+                current_time=$(date +%s)
+                if [ $(( current_time - start_time )) -ge 5 ]; then
+                        stop
+                        logger -is -t "$NAME" "ERROR: bfdd-control failed!"
+			exit 1
+                fi
+                sleep 0.2
+        done
+        $CONTROL_COMMAND log level detailed
+        $OPENBFDD_CONTROL
+end script
+
+post-stop script
+	NAME="$UPSTART_JOB"
+	rm -f /var/run/$NAME.pid
+end script
