@@ -959,7 +959,7 @@ protected:
         return;
       }
 
-      gLog.SetExtendedTimeInfo(enable ? Logger::TimeInfo::Mono : Logger::TimeInfo::None);
+      gLog.SetExtendedTimeInfo(enable ? Logger::TimeInfo::Real : Logger::TimeInfo::None);
       messageReplyF("Extended time logging %s.\n", enable ? "enabled" : "disabled");
       return;
     }

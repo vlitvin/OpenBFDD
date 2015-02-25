@@ -92,7 +92,7 @@ Logger:: Logger() :
    , m_levelCount(Log::LevelCount)
    , m_logFile(NULL)
    , m_useSyslog(false)
-   , m_extendedTimeInfo(TimeInfo::None)
+   , m_extendedTimeInfo(TimeInfo::Real)
 {
 
   if (pthread_rwlock_init(&m_settingsLock, NULL))
