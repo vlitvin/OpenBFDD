@@ -1,4 +1,12 @@
-openbfdd (0.5.3-1) precise; urgency=low
+openbfdd (0.5.3-3) precise; urgency=low
+
+  * Log with real time by default
+  * Switched from init.d to upstart
+  * Added PID-file creation and removal
+
+ -- Andrey Shorin (HH R&D Expluatation) <a.shorin@hh.ru>  Wed, 25 Feb 2015 17:53:04 +0300
+
+openbfdd (0.5.3-2) precise; urgency=low
 
   * Upstream v0.5.3
 
