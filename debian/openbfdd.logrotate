@@ -1,0 +1,7 @@
+/var/log/openbfdd.log {
+	weekly
+	notifempty
+	copytruncate
+	rotate 52
+}
+
