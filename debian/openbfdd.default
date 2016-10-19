@@ -8,6 +8,3 @@
 
 # Additional options that are passed to the Daemon.
 DAEMON_ARGS="--listen=0.0.0.0"
-# Only one command goes in OPENBFDD_CONTROL.
-# Use load <file> when you need more.
-OPENBFDD_CONTROL="$CONTROL_COMMAND allow 0.0.0.0"
